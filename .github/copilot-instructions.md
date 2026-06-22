@@ -69,8 +69,9 @@ Each guide will have different sections depending on the topic. Don't follow a f
 
 This repo ships skills (auto-loaded) and MCP servers. Kick the right one off whenever a
 request matches its domain — don't fall back to generic web search or memory when a capability
-below covers it. MCP servers are reached through their skill's bundled `mcp_proxy.py`, because
-`.mcp.json` servers don't auto-wire as native tools in the desktop app (copilot-cli #3126).
+below covers it. MCP servers are reached through the shared `mcp_proxy.py` (the `workspace-mcp`
+skill), because `.mcp.json` servers don't auto-wire as native tools in the desktop app
+(copilot-cli #3126).
 
 - **`mcp-microsoft-learn`** (skill + `microsoft-learn` MCP) — authoritative Microsoft, Azure,
   Microsoft Fabric, and Power BI docs, code samples, and product/API reference. See the skill
