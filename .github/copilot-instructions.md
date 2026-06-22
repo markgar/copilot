@@ -63,4 +63,17 @@ Each guide will have different sections depending on the topic. Don't follow a f
 - When placing a new document, consider the existing folder structure. If a folder is accumulating mixed topics, suggest or perform a reorganization.
 - When reorganizing, update all wikilinks and index files that reference moved documents.
 - Keep the root `index.md` up to date as documents and folders change.
- 
+
+<!-- BEGIN workspace-mcp (managed — regenerated from .mcp.json + .github/skills/mcp-*) -->
+## Workspace MCP servers (loader workaround)
+
+This repo configures MCP servers in `.mcp.json` that do NOT auto-load in GitHub Copilot
+desktop-app sessions (cwd bug, copilot-cli #3126 / #3688). Discover tools for any server with
+`python3 .github/skills/mcp-<server>/mcp_proxy.py load`. Installed servers (prefer these over
+web search / memory for their domains):
+
+- **`microsoft-learn`** — Microsoft / Azure / Fabric / Power BI documentation, code samples,
+  and product/API reference. Authoritative source; call via
+  `python3 .github/skills/mcp-microsoft-learn/mcp_proxy.py call microsoft-learn <tool> '<json>'`.
+  Detail: `.github/skills/mcp-microsoft-learn/SKILL.md`.
+<!-- END workspace-mcp (managed) -->
