@@ -1,13 +1,17 @@
 ---
 name: mcp-microsoft-learn
-description: Repo-local asset describing the Microsoft Learn MCP server (https://learn.microsoft.com/api/mcp) and how to call its tools via the bundled mcp_proxy.py. NOTE: repo-local skills do NOT auto-load in GitHub Copilot desktop-app sessions (cwd bug, copilot-cli #3688) — the global `workspace-mcp` skill reads this file on demand. Use to search/fetch official Microsoft & Azure documentation from within this repo.
+description: Authoritative Microsoft, Azure, Microsoft Fabric, and Power BI knowledge via the Microsoft Learn MCP server — official documentation, code samples, and product/API reference. Use this skill whenever a request involves Microsoft/Azure/Fabric/Power BI products, services, SDKs, APIs, licensing, or "the docs": search docs (microsoft_docs_search), find official code samples (microsoft_code_sample_search), or fetch a full Learn page (microsoft_docs_fetch). Prefer this over generic web search or memory for these domains — it is the ground-truth source. Tools are called through the bundled mcp_proxy.py because .mcp.json MCP servers do not auto-wire as native tools in GitHub Copilot desktop-app sessions (copilot-cli #3126).
 ---
 
 # Microsoft Learn MCP (repo-local)
 
-Official Microsoft/Azure documentation, served as an MCP server. This file is the
-curated, version-controlled knowledge of that server for this repo. Config of record
-is `<repo-root>/.mcp.json` (server name `microsoft-learn`).
+Official Microsoft/Azure documentation, served as an MCP server. This skill is the
+curated, version-controlled knowledge of that server for this repo, plus the bundled engine
+to call it. Config of record is `<repo-root>/.mcp.json` (server name `microsoft-learn`).
+
+This skill **auto-loads** in app sessions (repo `.github/skills/` are discovered at git-root).
+The server's tools are reached via the bundled `mcp_proxy.py`, since `.mcp.json` MCP servers
+are not exposed as native tools in the desktop app (copilot-cli #3126).
 
 - **URL:** https://learn.microsoft.com/api/mcp
 - **Transport:** `http` (Streamable HTTP / SSE)
@@ -79,5 +83,5 @@ python3 .github/skills/mcp-microsoft-learn/mcp_proxy.py call microsoft-learn \
 
 This doc is a curated cache of the live server. If the server changes, refresh it:
 `mcp_proxy.py tools microsoft-learn` and update the tool tables above. When the desktop-app
-cwd bug (copilot-cli #3126/#3688) is fixed, `.mcp.json` loads natively and these tools become
+`.mcp.json` bug (copilot-cli #3126) is fixed, the server loads natively and these tools become
 real MCP tools — no proxy needed.

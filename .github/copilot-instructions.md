@@ -64,16 +64,15 @@ Each guide will have different sections depending on the topic. Don't follow a f
 - When reorganizing, update all wikilinks and index files that reference moved documents.
 - Keep the root `index.md` up to date as documents and folders change.
 
-<!-- BEGIN workspace-mcp (managed — regenerated from .mcp.json + .github/skills/mcp-*) -->
-## Workspace MCP servers (loader workaround)
+<!-- BEGIN repo-capabilities (managed — regenerated from .github/skills/* + .mcp.json) -->
+## This repo's capabilities (use proactively)
 
-This repo configures MCP servers in `.mcp.json` that do NOT auto-load in GitHub Copilot
-desktop-app sessions (cwd bug, copilot-cli #3126 / #3688). Discover tools for any server with
-`python3 .github/skills/mcp-<server>/mcp_proxy.py load`. Installed servers (prefer these over
-web search / memory for their domains):
+This repo ships skills (auto-loaded) and MCP servers. Kick the right one off whenever a
+request matches its domain — don't fall back to generic web search or memory when a capability
+below covers it. MCP servers are reached through their skill's bundled `mcp_proxy.py`, because
+`.mcp.json` servers don't auto-wire as native tools in the desktop app (copilot-cli #3126).
 
-- **`microsoft-learn`** — Microsoft / Azure / Fabric / Power BI documentation, code samples,
-  and product/API reference. Authoritative source; call via
-  `python3 .github/skills/mcp-microsoft-learn/mcp_proxy.py call microsoft-learn <tool> '<json>'`.
-  Detail: `.github/skills/mcp-microsoft-learn/SKILL.md`.
-<!-- END workspace-mcp (managed) -->
+- **`mcp-microsoft-learn`** (skill + `microsoft-learn` MCP) — authoritative Microsoft, Azure,
+  Microsoft Fabric, and Power BI docs, code samples, and product/API reference. See the skill
+  for tools and call syntax.
+<!-- END repo-capabilities (managed) -->
