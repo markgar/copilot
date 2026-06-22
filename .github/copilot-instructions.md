@@ -64,3 +64,18 @@ Each guide will have different sections depending on the topic. Don't follow a f
 - When reorganizing, update all wikilinks and index files that reference moved documents.
 - Keep the root `index.md` up to date as documents and folders change.
  
+
+<!-- BEGIN workspace-mcp (managed) -->
+## Workspace MCP servers (loader workaround)
+
+This repo configures MCP servers in `.mcp.json` that do NOT auto-load in GitHub Copilot
+desktop-app sessions (cwd bug, copilot-cli #3126 / #3688). To use them in a session:
+
+- Discover available tools: `python3 .github/skills/mcp-microsoft-learn/mcp_proxy.py load`
+- **Microsoft / Azure / Fabric / Power BI documentation questions:** prefer the
+  `microsoft-learn` MCP server over web search or memory — it is the authoritative source.
+  Call it with `python3 .github/skills/mcp-microsoft-learn/mcp_proxy.py call microsoft-learn <tool> '<json>'`.
+  Tools: `microsoft_docs_search` (`{"query":"..."}`), `microsoft_code_sample_search`
+  (`{"query":"...","language":"..."?}`), `microsoft_docs_fetch` (`{"url":"..."}`).
+  See `.github/skills/mcp-microsoft-learn/SKILL.md` for details.
+<!-- END workspace-mcp (managed) -->
