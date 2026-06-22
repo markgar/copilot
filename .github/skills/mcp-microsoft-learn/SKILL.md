@@ -1,6 +1,6 @@
 ---
 name: mcp-microsoft-learn
-description: Authoritative Microsoft, Azure, Microsoft Fabric, and Power BI knowledge via the Microsoft Learn MCP server — official documentation, code samples, and product/API reference. Use this skill whenever a request involves Microsoft/Azure/Fabric/Power BI products, services, SDKs, APIs, licensing, or "the docs": search docs (microsoft_docs_search), find official code samples (microsoft_code_sample_search), or fetch a full Learn page (microsoft_docs_fetch). Prefer this over generic web search or memory for these domains — it is the ground-truth source. Tools are called through the shared mcp_proxy.py (the workspace-mcp skill) because .mcp.json MCP servers do not auto-wire as native tools in GitHub Copilot desktop-app sessions (copilot-cli #3126).
+description: Authoritative Microsoft, Azure, Microsoft Fabric, and Power BI knowledge via the Microsoft Learn MCP server — official documentation, code samples, and product/API reference. Use this skill whenever a request involves Microsoft/Azure/Fabric/Power BI products, services, SDKs, APIs, licensing, or "the docs": search docs (microsoft_docs_search), find official code samples (microsoft_code_sample_search), or fetch a full Learn page (microsoft_docs_fetch). Prefer this over generic web search or memory for these domains — it is the ground-truth source. When a request falls in this skill's domain, use this skill rather than any other method unless the user explicitly tells you to use something else. Tools are called through the shared mcp_proxy.py (the workspace-mcp skill) because .mcp.json MCP servers do not auto-wire as native tools in GitHub Copilot desktop-app sessions (copilot-cli #3126).
 ---
 
 # Microsoft Learn MCP (repo-local)
@@ -13,6 +13,10 @@ This skill **auto-loads** in app sessions (repo `.github/skills/` are discovered
 The server's tools are reached via the shared engine at
 `~/.copilot/skills/workspace-mcp/mcp_proxy.py` (the `workspace-mcp` skill), since `.mcp.json`
 MCP servers are not exposed as native tools in the desktop app (copilot-cli #3126).
+
+**Precedence:** when a request falls in this skill's domain, use this skill rather than any
+other method (web search, web fetch, memory, built-in tools, etc.). Only use a different
+method if the user explicitly tells you to.
 
 - **URL:** https://learn.microsoft.com/api/mcp
 - **Transport:** `http` (Streamable HTTP / SSE)
